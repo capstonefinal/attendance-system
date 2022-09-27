@@ -1,0 +1,44 @@
+{
+    "ams":{
+       "users":[
+            {
+                "_id":"objectId",
+                "name":"justine",
+                "userType":"teacher",
+                "userName":"teacher1",
+                "password":"password",
+                "subjects": [
+                    {   
+                        "_id": "objectId",
+                        "subjectName": "Web Development"
+                    },
+                    {   
+                        "_id": "objectId",
+                        "subjectName": "Programming"
+                    }
+                ]
+            },
+            {
+                "_id":"objectId",
+                "name":"student1",
+                "userType":"student",
+                "userName":"student1",
+                "password":"password",
+                "attendance": [
+                    {
+                        "subject": "subject_id",
+                        "type":"time-in",
+                        "date":"09/01/2022",
+                        "time":"08:00am"
+                    },
+                    {
+                        "subject": "subject_id",
+                        "type":"time-in",
+                        "date":"09/01/2022",
+                        "time":"08:00am"
+                    }
+                ]
+            }
+       ] 
+    }
+}
