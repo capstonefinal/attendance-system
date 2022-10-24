@@ -12,7 +12,7 @@ import { toast } from 'react-toastify'
 const getAllUser = async () => {
     const response = await axios.get('users')
         .then(function (res) {
-            console.log(res.data);
+            // console.log(res.data);
             return res
         })
     // const response = await axios.get('https://acc-attendance-backend.onrender.com/api/users', config)

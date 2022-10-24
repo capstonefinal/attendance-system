@@ -1,17 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import { store } from './app/store'
-import { Provider } from 'react-redux'
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+import { store } from "./app/store";
+import { Provider } from "react-redux";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient();
+ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     {/* <React.StrictMode> */}
-      <BrowserRouter>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
         <App />
-      </BrowserRouter>
+      </QueryClientProvider>
+    </BrowserRouter>
     {/* </React.StrictMode> */}
   </Provider>
-)
+);
