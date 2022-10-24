@@ -12,6 +12,8 @@
   "dependencies": {
     "@formkit/auto-animate": "^1.0.0-beta.3",
     "@reduxjs/toolkit": "^1.8.5",
+    "@tanstack/react-query": "^4.13.0",
+    "@tanstack/react-query-devtools": "^4.13.0",
     "axios": "^0.27.2",
     "dotenv": "^16.0.2",
     "moment": "^2.29.4",
