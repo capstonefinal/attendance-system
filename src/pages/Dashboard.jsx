@@ -19,7 +19,7 @@ export default function Dashboard() {
     return <>
         <div className="mx-auto p-5 overflow-x-auto relative sm:rounded-lg w-full max-w-4xl">
             <table className="w-full text-sm text-left text-slate-200">
-                <thead className="text-slate-200 bg-slate-50 dark:bg-slate-600">
+                <thead className="text-slate-200 bg-slate-50 bg-slate-600">
                     <tr>
                         <td scope="col" className="py-3 px-6">
                             Subject
