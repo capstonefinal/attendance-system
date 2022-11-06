@@ -14,7 +14,9 @@ export default function Dashboard() {
     useEffect(() => {
         if (!user) {
             navigate('login')
-        }
+        } else {
+            navigate("attendance");
+          }
     })
     return <>
         <div className="mx-auto p-5 overflow-x-auto relative sm:rounded-lg w-full max-w-4xl">

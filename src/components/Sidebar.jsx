@@ -63,7 +63,7 @@ export default function Sidebar() {
       </div>
       <div className="flex flex-col justify-between h-full w-full bg-slate-900">
         <div className="flex flex-col w-full space-y-2 bg-slate-900">
-          <LinkTo
+          {/* <LinkTo
             isShown={isShown}
             to="/"
             caption="Dashboard"
@@ -82,7 +82,7 @@ export default function Sidebar() {
                 />
               </svg>
             }
-          />
+          /> */}
           <LinkTo
             isShown={isShown}
             to="attendance"
