@@ -28,6 +28,16 @@ export default function Attendance() {
       return res.data;
     });
   });
+  function Receipt() {
+    return (
+      <pre>
+        <p className="text-green-600">resibo</p>
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+      </pre>
+    );
+  }
   const scanIdMutation = useMutation(
     (x) => {
       // console.table({
@@ -45,7 +55,8 @@ export default function Attendance() {
     },
     {
       onSuccess: (data, variables, context) => {
-        // Boom baby!
+        // window.open("/");
+
         setCaption(
           data.message.includes("Cannot")
             ? "Student ID not found"
@@ -122,7 +133,7 @@ export default function Attendance() {
         if (!isNaN(parseInt(event.key))) {
           x = x + event.key;
         }
-        console.log(x);
+        // console.log(x);
       }
     };
     document.addEventListener("keydown", keyDownHandler);
@@ -215,6 +226,9 @@ export default function Attendance() {
           fullscreen={true}
         >
           <div className="space-y-6 p-10 flex flex-col h-screen w-full overflow-auto">
+            <p className="text-4xl font-medium text-center py-10 text-yellow-700 pt-5">
+              {moment(new Date()).format("MMMM DD, YYYY")}
+            </p>
             <div className="flex justify-between w-full max-w-3xl mx-auto opacity-70">
               <p className={`text-3xl text-center`}>
                 {currentSubject && currentSubject.subjectName}
@@ -229,6 +243,7 @@ export default function Attendance() {
                 {attendanceType}
               </p>
             </div>
+
             <p className="text-5xl text-center py-20">{caption}</p>
             {/* <p className='text-5xl text-center py-20'>Please scan your ID</p> */}
 
@@ -258,7 +273,7 @@ export default function Attendance() {
                           // console.log(fstudent.student);
 
                           return (
-                            !fstudent.timeOut &&
+                            fstudent.timeIn &&
                             fstudent.subject._id == currentSubject._id
                           );
                         }

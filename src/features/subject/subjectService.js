@@ -1,11 +1,20 @@
 import axios from "../../../axiosConfig";
 
-const getSubjects = async () => {
+const getSubjects = async (userId) => {
+    // console.log(userId);
+    // console.log(JSON.parse(localStorage.getItem("user"))?._id);
+    if (userId) {
+        const data = await axios.get('subjects',{userId: userId})
+        .then((res) => {
+            return res.data
+        })
+        return data
+    }
     const data = await axios.get('subjects')
         .then((res) => {
             return res.data
         })
-    return data
+        return data
 }
 const getSubject = async (data) => {
     const res = await axios.get(`subjects/${data.subjectId}`)
@@ -16,12 +25,16 @@ const getSubject = async (data) => {
 
 }
 const addSubject = async (data) => {
-    await axios.post('subjects', data).then(res=>console.log(res))
+    await axios.post('subjects', data)
     
     return await getSubjects()
 }
 const scanID = async (data) => {
-    const res = await axios.post('attendance/', data)
+    const res = await axios.post('attendance/', data).then(res=>{
+        // res.data.message.includes("Successful")
+        
+        return res
+    })
     // await axios.post('attendance/', data, config(token))
     // res.data && console.log(res.data);
     let subjects = await getSubjects()

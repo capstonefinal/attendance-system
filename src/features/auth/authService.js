@@ -1,6 +1,7 @@
 // import axios from 'axios'
 import axios from "/axiosConfig";
 import { toast } from 'react-toastify'
+import axiosConfig from "../../../axiosConfig";
 // function api(url) {
 //     return 'https://mern-backend-test.onrender.com/api/' + url
 //     // return 'http://localhost:5000/api/' + url
@@ -34,6 +35,7 @@ const login = async (userData) => {
     const response = await axios.post('users/login', userData)
     if (response.data) {
         localStorage.setItem('user', JSON.stringify(response.data))
+        axiosConfig.defaults.headers.common['Authorization'] = 'Bearer '+response.data.token;
     }
 
     return response.data

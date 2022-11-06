@@ -26,11 +26,19 @@ export default function Subject() {
 
   const data = useQuery(
     ["data"],
-    async () => await subjectService.getSubjects()
+    async () =>
+      await subjectService.getSubjects(
+        await JSON.parse(localStorage.getItem("user"))._id
+      )
+    // {
+    //   // Refetch the data every {N} seconds
+    //   refetchInterval: 5000,
+    // }
   );
-  useEffect(() => {
-    queryClient.refetchQueries(["data"]);
-  }, [data]);
+
+  // useEffect(() => {
+  //   queryClient.refetchQueries(["data"]);
+  // }, [data]);
   // const data = useQuery(["data"], async () => {
   //   return await axios.get("subjects").then((res) => {
   //     return res.data;
@@ -62,9 +70,10 @@ export default function Subject() {
     // });
     // modalOpen();
   }
-  const deleteSubjectMutation = useMutation((subject) =>
-    subjectService.deleteSubject(subject)
-  );
+  const deleteSubjectMutation = useMutation(async (subject) => {
+    await subjectService.deleteSubject(subject);
+    queryClient.invalidateQueries(["data"]);
+  });
   function handleDeleteSubject(e, subject) {
     e.stopPropagation();
     if (confirm("Are you sure you want to delete this subject?")) {
